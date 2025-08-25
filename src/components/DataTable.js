@@ -15,7 +15,7 @@ import Pagination from './Pagination';
 import ColumnVisibilityButton from './ColumnVisibilityButton';
 import './DataTable.css';
 
-const DataTable = ({ data, itemsPerPage = 10 }) => {
+const DataTable = ({ data }) => {
   // Get initial columns from data
   const initialColumns = useMemo(() => getColumns(data), [data]);
 
@@ -55,7 +55,14 @@ const DataTable = ({ data, itemsPerPage = 10 }) => {
   }, [columnFilteredData, sortConfig]);
 
   // Pagination
-  const { currentPage, totalPages, paginatedData, handlePageChange } = usePagination(sortedData, itemsPerPage);
+  const { 
+    currentPage, 
+    totalPages, 
+    paginatedData, 
+    itemsPerPage,
+    handlePageChange,
+    handleItemsPerPageChange 
+  } = usePagination(sortedData, 10);
 
   // Early return for empty data
   if (!data || data.length === 0) {
@@ -67,7 +74,7 @@ const DataTable = ({ data, itemsPerPage = 10 }) => {
   return (
     <div className="data-table-container">
       <div className="data-table-header">
-        <h2>Data Table</h2>
+        <h1 className="data-table-title">Data Table</h1>
         <div className="data-table-controls">
           <SearchInput searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
           {hasActiveFilters && (
@@ -120,6 +127,9 @@ const DataTable = ({ data, itemsPerPage = 10 }) => {
         currentPage={currentPage}
         totalPages={totalPages}
         handlePageChange={handlePageChange}
+        itemsPerPage={itemsPerPage}
+        handleItemsPerPageChange={handleItemsPerPageChange}
+        totalItems={sortedData.length}
       />
     </div>
   );

@@ -1,7 +1,6 @@
-
 import React from 'react';
 
-const ActionButtons = ({ onClearFilters, onResetColumns, hasFilters }) => (
+const ActionButtons = ({ onClearFilters, onResetColumns, hasFilters, onShowAll, onHideAll, canShowAll, canHideAll }) => (
   <>
     {hasFilters && (
       <button
@@ -12,7 +11,20 @@ const ActionButtons = ({ onClearFilters, onResetColumns, hasFilters }) => (
         Clear Filters
       </button>
     )}
-
+    <button
+      onClick={onShowAll}
+      disabled={!canShowAll}
+      className="nhsuk-button nhsuk-button--secondary"
+    >
+      Show All
+    </button>
+    <button
+      onClick={onHideAll}
+      disabled={!canHideAll}
+      className="nhsuk-button nhsuk-button--secondary"
+    >
+      Hide All
+    </button>
     <button
       onClick={onResetColumns}
       className="reset-columns-btn"

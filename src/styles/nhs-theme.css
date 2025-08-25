@@ -1,0 +1,497 @@
+/* NHS.UK Design System Theme for DataTable */
+
+/* NHS.UK Color Palette */
+:root {
+  /* Primary colors */
+  --nhs-blue: #005eb8;
+  --nhs-dark-blue: #003087;
+  --nhs-bright-blue: #0072ce;
+  --nhs-light-blue: #41b6e6;
+  --nhs-aqua-blue: #00a9ce;
+
+  /* Secondary colors */
+  --nhs-black: #212b32;
+  --nhs-dark-grey: #425563;
+  --nhs-mid-grey: #768692;
+  --nhs-pale-grey: #e8edee;
+  --nhs-white: #ffffff;
+
+  /* State colors */
+  --nhs-red: #d5281b;
+  --nhs-orange: #fa9200;
+  --nhs-warm-yellow: #ffb81c;
+  --nhs-yellow: #fff2bf;
+  --nhs-green: #006747;
+  --nhs-light-green: #78be20;
+  --nhs-purple: #330072;
+  --nhs-pink: #ae2573;
+
+  /* Background */
+  --nhs-grey-background: #f0f4f5;
+
+  /* Typography */
+  --nhs-font-family: "Frutiger W01", Arial, sans-serif;
+  --nhs-font-size-base: 19px;
+  --nhs-line-height-base: 1.47;
+
+  /* Spacing */
+  --nhs-spacing-1: 4px;
+  --nhs-spacing-2: 8px;
+  --nhs-spacing-3: 12px;
+  --nhs-spacing-4: 16px;
+  --nhs-spacing-5: 20px;
+  --nhs-spacing-6: 24px;
+  --nhs-spacing-7: 28px;
+  --nhs-spacing-8: 32px;
+  --nhs-spacing-9: 40px;
+
+  /* Border radius */
+  --nhs-border-radius: 4px;
+}
+
+/* Base styling */
+.data-table-container {
+  font-family: var(--nhs-font-family);
+  font-size: var(--nhs-font-size-base);
+  line-height: var(--nhs-line-height-base);
+  color: var(--nhs-black);
+  background-color: var(--nhs-white);
+  border-radius: var(--nhs-border-radius);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: var(--nhs-spacing-6) 0;
+}
+
+/* Header styling */
+.data-table-header {
+  background-color: var(--nhs-grey-background);
+  padding: var(--nhs-spacing-6);
+  border-bottom: 4px solid var(--nhs-blue);
+  border-radius: var(--nhs-border-radius) var(--nhs-border-radius) 0 0;
+}
+
+.data-table-title {
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--nhs-black);
+  margin: 0 0 var(--nhs-spacing-4) 0;
+  line-height: 1.25;
+}
+
+/* Controls section */
+.data-table-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nhs-spacing-4);
+  align-items: center;
+  padding: var(--nhs-spacing-5) var(--nhs-spacing-6);
+  background-color: var(--nhs-grey-background);
+  border-bottom: 1px solid var(--nhs-pale-grey);
+}
+
+/* Search input - NHS.UK style */
+.search-input {
+  font-family: var(--nhs-font-family);
+  font-size: var(--nhs-font-size-base);
+  padding: var(--nhs-spacing-3) var(--nhs-spacing-4);
+  border: 2px solid var(--nhs-dark-grey);
+  border-radius: var(--nhs-border-radius);
+  background-color: var(--nhs-white);
+  color: var(--nhs-black);
+  min-width: 280px;
+  transition: border-color 0.15s ease-in-out;
+}
+
+.search-input:focus {
+  outline: 3px solid var(--nhs-bright-blue);
+  outline-offset: 0;
+  border-color: var(--nhs-black);
+  box-shadow: none;
+}
+
+.search-input::placeholder {
+  color: var(--nhs-mid-grey);
+}
+
+/* NHS.UK Button styles */
+.nhsuk-button {
+  font-family: var(--nhs-font-family);
+  font-size: var(--nhs-font-size-base);
+  font-weight: 600;
+  line-height: 1.47;
+  display: inline-block;
+  position: relative;
+  width: auto;
+  margin: 0;
+  padding: var(--nhs-spacing-3) var(--nhs-spacing-5);
+  border: 2px solid transparent;
+  border-radius: var(--nhs-border-radius);
+  color: var(--nhs-white);
+  background-color: var(--nhs-green);
+  text-align: center;
+  vertical-align: top;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.nhsuk-button:hover {
+  background-color: #005a42;
+}
+
+.nhsuk-button:focus {
+  outline: 3px solid var(--nhs-bright-blue);
+  outline-offset: 0;
+  background-color: #005a42;
+}
+
+.nhsuk-button:active {
+  background-color: #004d39;
+}
+
+/* Secondary button */
+.nhsuk-button--secondary {
+  background-color: var(--nhs-dark-grey);
+  color: var(--nhs-white);
+}
+
+.nhsuk-button--secondary:hover {
+  background-color: #3a4a56;
+}
+
+/* Column visibility button */
+.column-visibility-btn {
+  font-family: var(--nhs-font-family);
+  font-size: var(--nhs-font-size-base);
+  font-weight: 400;
+  padding: var(--nhs-spacing-3) var(--nhs-spacing-4);
+  border: 2px solid var(--nhs-dark-grey);
+  border-radius: var(--nhs-border-radius);
+  background-color: var(--nhs-white);
+  color: var(--nhs-black);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: var(--nhs-spacing-2);
+  transition: all 0.15s ease-in-out;
+}
+
+.column-visibility-btn:hover {
+  background-color: var(--nhs-grey-background);
+  border-color: var(--nhs-black);
+}
+
+.column-visibility-btn:focus {
+  outline: 3px solid var(--nhs-bright-blue);
+  outline-offset: 0;
+  border-color: var(--nhs-black);
+}
+
+/* Table styling */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+  background-color: var(--nhs-white);
+}
+
+.data-table th {
+  background-color: var(--nhs-blue);
+  color: var(--nhs-white);
+  font-weight: 600;
+  text-align: left;
+  padding: var(--nhs-spacing-4) var(--nhs-spacing-3);
+  border-bottom: 1px solid var(--nhs-dark-blue);
+  position: relative;
+}
+
+.data-table th:first-child {
+  border-left: none;
+}
+
+.data-table td {
+  padding: var(--nhs-spacing-4) var(--nhs-spacing-3);
+  border-bottom: 1px solid var(--nhs-pale-grey);
+  vertical-align: top;
+}
+
+.data-table tbody tr:hover {
+  background-color: var(--nhs-grey-background);
+}
+
+.data-table tbody tr:nth-child(even) {
+  background-color: #fafbfc;
+}
+
+.data-table tbody tr:nth-child(even):hover {
+  background-color: var(--nhs-grey-background);
+}
+
+/* Sortable headers */
+.sortable-header {
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.sortable-header:hover {
+  background-color: var(--nhs-dark-blue);
+}
+
+.sortable-header:focus {
+  outline: 3px solid var(--nhs-bright-blue);
+  outline-offset: -3px;
+}
+
+/* Sort indicators */
+.sort-icon {
+  font-weight: bold;
+  margin-left: var(--nhs-spacing-2);
+  color: var(--nhs-white);
+}
+
+.sort-order {
+  font-size: 14px;
+  margin-left: var(--nhs-spacing-1);
+  opacity: 0.8;
+}
+
+/* Column search inputs */
+.column-search-input {
+  font-family: var(--nhs-font-family);
+  font-size: 16px;
+  width: 100%;
+  padding: var(--nhs-spacing-2) var(--nhs-spacing-3);
+  border: 1px solid var(--nhs-pale-grey);
+  border-radius: var(--nhs-border-radius);
+  background-color: var(--nhs-white);
+  color: var(--nhs-black);
+  margin-top: var(--nhs-spacing-2);
+}
+
+.column-search-input:focus {
+  outline: 2px solid var(--nhs-bright-blue);
+  outline-offset: 0;
+  border-color: var(--nhs-black);
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--nhs-spacing-2);
+  padding: var(--nhs-spacing-6);
+  background-color: var(--nhs-grey-background);
+  border-top: 1px solid var(--nhs-pale-grey);
+  border-radius: 0 0 var(--nhs-border-radius) var(--nhs-border-radius);
+}
+
+.pagination-btn {
+  padding: 8px 12px;
+  border: 2px solid #d8dde0;
+  background: #ffffff;
+  color: #212b32;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 400;
+  transition: all 0.2s ease;
+  min-width: 44px;
+  height: 44px;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background: #f0f4f5;
+  border-color: #005eb8;
+}
+
+.pagination-btn:focus {
+  outline: 3px solid #ffeb3b;
+  outline-offset: 0;
+  box-shadow: inset 0 0 0 2px #005eb8;
+}
+
+.pagination-btn:disabled {
+  background: #f0f4f5;
+  color: #768692;
+  cursor: not-allowed;
+  border-color: #d8dde0;
+}
+
+.pagination-btn.active {
+  background: #005eb8;
+  color: #ffffff;
+  border-color: #005eb8;
+}
+
+/* Items per page selector */
+.items-per-page-selector {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  color: #212b32;
+}
+
+.items-per-page-label,
+.items-per-page-text {
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.items-per-page-select {
+  padding: 8px 12px;
+  border: 2px solid #d8dde0;
+  border-radius: 4px;
+  background: #ffffff;
+  color: #212b32;
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
+  min-width: 60px;
+  height: 44px;
+}
+
+.items-per-page-select:hover {
+  border-color: #005eb8;
+}
+
+.items-per-page-select:focus {
+  outline: 3px solid #ffeb3b;
+  outline-offset: 0;
+  box-shadow: inset 0 0 0 2px #005eb8;
+  border-color: #005eb8;
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+  background-color: var(--nhs-white);
+  border: 2px solid var(--nhs-dark-grey);
+  border-radius: var(--nhs-border-radius);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  padding: var(--nhs-spacing-4);
+  min-width: 280px;
+  z-index: 1000;
+}
+
+.dropdown-header {
+  font-weight: 600;
+  color: var(--nhs-black);
+  margin-bottom: var(--nhs-spacing-4);
+  padding-bottom: var(--nhs-spacing-3);
+  border-bottom: 1px solid var(--nhs-pale-grey);
+}
+
+.dropdown-divider {
+  height: 1px;
+  background-color: var(--nhs-pale-grey);
+  margin: var(--nhs-spacing-4) 0;
+}
+
+/* Checkbox styling */
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: var(--nhs-spacing-3);
+  padding: var(--nhs-spacing-2) 0;
+  cursor: pointer;
+}
+
+.checkbox-item input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--nhs-dark-grey);
+  border-radius: var(--nhs-border-radius);
+  cursor: pointer;
+}
+
+.checkbox-item input[type="checkbox"]:focus {
+  outline: 3px solid var(--nhs-bright-blue);
+  outline-offset: 0;
+}
+
+.checkbox-item input[type="checkbox"]:checked {
+  background-color: var(--nhs-blue);
+  border-color: var(--nhs-blue);
+}
+
+.checkbox-item.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Results info */
+.results-info {
+  font-size: 16px;
+  color: var(--nhs-dark-grey);
+  margin: var(--nhs-spacing-4) 0;
+}
+
+/* Clear filters button */
+.clear-filters-btn {
+  font-family: var(--nhs-font-family);
+  font-size: 16px;
+  color: var(--nhs-blue);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: var(--nhs-spacing-2) 0;
+}
+
+.clear-filters-btn:hover {
+  color: var(--nhs-dark-blue);
+}
+
+.clear-filters-btn:focus {
+  outline: 3px solid var(--nhs-bright-blue);
+  outline-offset: 2px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .data-table-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .search-input {
+    min-width: auto;
+    width: 100%;
+  }
+  
+  .data-table {
+    font-size: 16px;
+  }
+  
+  .data-table th,
+  .data-table td {
+    padding: var(--nhs-spacing-3) var(--nhs-spacing-2);
+  }
+  
+  .pagination {
+    flex-wrap: wrap;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .data-table th {
+    border: 2px solid var(--nhs-black);
+  }
+  
+  .data-table td {
+    border: 1px solid var(--nhs-black);
+  }
+  
+  .nhsuk-button {
+    border: 2px solid var(--nhs-black);
+  }
+}

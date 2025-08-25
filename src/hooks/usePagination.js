@@ -1,8 +1,9 @@
 
 import { useState, useMemo } from 'react';
 
-export const usePagination = (data, itemsPerPage = 10) => {
+export const usePagination = (data, initialItemsPerPage = 10) => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(initialItemsPerPage);
 
   // Handle undefined or null data
   const safeData = data || [];
@@ -15,10 +16,17 @@ export const usePagination = (data, itemsPerPage = 10) => {
     setCurrentPage(page);
   };
 
+  const handleItemsPerPageChange = (newItemsPerPage) => {
+    setItemsPerPage(newItemsPerPage);
+    setCurrentPage(1); // Reset to first page when changing items per page
+  };
+
   return {
     currentPage,
     totalPages,
     paginatedData,
-    handlePageChange
+    itemsPerPage,
+    handlePageChange,
+    handleItemsPerPageChange
   };
 };

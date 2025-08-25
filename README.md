@@ -1,70 +1,195 @@
-# Getting Started with Create React App
+# React DataTable
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> A modern, feature-rich data table component for React applications
 
-## Available Scripts
+[![npm version](https://img.shields.io/npm/v/react-datatable.svg)](https://www.npmjs.com/package/react-datatable)
+[![Build Status](https://img.shields.io/github/workflow/status/username/datatables/CI)](https://github.com/username/datatables/actions)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-In the project directory, you can run:
+A powerful and flexible data table component built with React, featuring advanced sorting, filtering, column management, and drag-and-drop functionality.
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- 🔍 **Global and column-specific search/filtering**
+- 🔄 **Multi-column sorting with visual indicators**
+- 👁️ **Column visibility management with modern dropdown**
+- 🎯 **Drag and drop column reordering**
+- 📄 **Built-in pagination**
+- 🎨 **Modern, responsive design**
+- ♿ **Accessibility-first approach**
+- 🧪 **Comprehensive test coverage**
+- 📱 **Mobile-friendly interface**
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Installation
 
-### `npm test`
+```bash
+npm install react-datatable
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Quick Start
 
-### `npm run build`
+```jsx
+import React from 'react';
+import { DataTable } from 'react-datatable';
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+const data = [
+  { id: 1, name: 'John Doe', age: 30, email: 'john@example.com' },
+  { id: 2, name: 'Jane Smith', age: 25, email: 'jane@example.com' },
+  // ... more data
+];
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+function App() {
+  return (
+    <DataTable 
+      data={data} 
+      itemsPerPage={10} 
+    />
+  );
+}
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## API Reference
 
-### `npm run eject`
+### DataTable Props
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `data` | `Array<Object>` | `[]` | Array of data objects to display |
+| `itemsPerPage` | `number` | `10` | Number of items per page |
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Column Configuration
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Columns are automatically detected from your data structure. Each object key becomes a column.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```jsx
+const data = [
+  {
+    firstName: 'John',    // Column: "First Name"
+    lastName: 'Doe',      // Column: "Last Name"
+    age: 30,              // Column: "Age"
+    isActive: true        // Column: "Is Active"
+  }
+];
+```
 
-## Learn More
+## Advanced Usage
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Custom Styling
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The component uses CSS classes that can be customized:
 
-### Code Splitting
+```css
+.data-table-container {
+  /* Main container styles */
+}
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+.column-visibility-btn {
+  /* Column visibility button styles */
+}
 
-### Analyzing the Bundle Size
+.draggable-header {
+  /* Draggable column header styles */
+}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Programmatic Control
 
-### Making a Progressive Web App
+```jsx
+import { DataTable, useDataTable } from 'react-datatable';
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+function AdvancedExample() {
+  const {
+    filteredData,
+    sortConfig,
+    hiddenColumns,
+    // ... other state
+  } = useDataTable(data);
 
-### Advanced Configuration
+  return (
+    <DataTable 
+      data={data}
+      // Additional props for advanced control
+    />
+  );
+}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Development
 
-### Deployment
+### Prerequisites
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- Node.js 14+
+- npm or yarn
 
-### `npm run build` fails to minify
+### Setup
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+# Clone the repository
+git clone https://github.com/username/datatables.git
+cd datatables
+
+# Install dependencies
+npm install
+
+# Start development server
+npm start
+```
+
+### Testing
+
+```bash
+# Run tests
+npm test
+
+# Run tests with coverage
+npm test -- --coverage
+
+# Run specific test file
+npm test DataTable.test.js
+```
+
+### Building
+
+```bash
+# Build for production
+npm run build
+
+# Analyze bundle size
+npm run analyze
+```
+
+## Browser Support
+
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## Architecture
+
+The component follows SOLID principles with a modular architecture:
+
+- **Hooks**: Separate concerns (sorting, filtering, pagination)
+- **Components**: Small, focused, reusable components
+- **Utils**: Pure functions for data processing
+- **Tests**: Comprehensive test coverage
+
+## License
+
+MIT © [Your Name](https://github.com/username)
+
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for details.
+
+---
+
+**Made with ❤️ by [Your Name](https://github.com/username)**

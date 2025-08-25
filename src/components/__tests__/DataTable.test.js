@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import DataTable from '../DataTable';
 
@@ -69,7 +70,7 @@ describe('DataTable Component', () => {
       render(<DataTable data={mockData} />);
       
       const searchInput = screen.getByPlaceholderText(/search/i);
-      await user.type(searchInput, 'John');
+      await userEvent.type(searchInput, 'John');
       
       await waitFor(() => {
         expect(screen.getByText('John')).toBeInTheDocument();
@@ -90,6 +91,7 @@ describe('DataTable Component', () => {
     });
 
     test('clears search when clear all filters button is clicked', async () => {
+      const user = userEvent;
       render(<DataTable data={mockData} />);
       
       const searchInput = screen.getByPlaceholderText(/search/i);
@@ -100,7 +102,7 @@ describe('DataTable Component', () => {
       });
       
       const clearButton = screen.getByText('Clear All Filters');
-      await userEvent.click(clearButton);
+      await user.click(clearButton);
       
       await waitFor(() => {
         expect(searchInput.value).toBe('');
@@ -117,6 +119,7 @@ describe('DataTable Component', () => {
     });
 
     test('opens column visibility dropdown when button is clicked', async () => {
+      const user = userEvent;
       render(<DataTable data={mockData} />);
       
       const columnButton = screen.getByRole('button', { name: /columns/i });
@@ -168,6 +171,7 @@ describe('DataTable Component', () => {
 
   describe('Sorting Functionality', () => {
     test('sorts data when column header is clicked', async () => {
+      const user = userEvent;
       render(<DataTable data={mockData} />);
       
       const ageHeader = screen.getByText('Age');
@@ -210,9 +214,9 @@ describe('DataTable Component', () => {
     test('displays pagination controls with large dataset', () => {
       render(<DataTable data={largeDataSet} itemsPerPage={10} />);
       
-      expect(screen.getByText('1')).toBeInTheDocument();
-      expect(screen.getByText('2')).toBeInTheDocument();
-      expect(screen.getByText('3')).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: '1' })).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: '2' })).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: '3' })).toBeInTheDocument();
     });
 
     test('navigates to next page when next button is clicked', async () => {
@@ -271,6 +275,7 @@ describe('DataTable Component', () => {
 
   describe('Accessibility', () => {
     test('has proper ARIA attributes for dropdown', async () => {
+      const user = userEvent;
       render(<DataTable data={mockData} />);
       
       const columnButton = screen.getByRole('button', { name: /columns/i });

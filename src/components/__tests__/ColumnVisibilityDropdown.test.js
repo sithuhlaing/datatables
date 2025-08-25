@@ -26,7 +26,7 @@ describe('ColumnVisibilityDropdown Component', () => {
   });
 
   test('opens dropdown when button is clicked', async () => {
-    const user = userEvent.setup();
+    const user = userEvent;
     render(<ColumnVisibilityDropdown {...mockProps} />);
     
     const button = screen.getByRole('button');
@@ -40,7 +40,7 @@ describe('ColumnVisibilityDropdown Component', () => {
   });
 
   test('closes dropdown when clicked outside', async () => {
-    const user = userEvent.setup();
+    const user = userEvent;
     render(
       <div>
         <ColumnVisibilityDropdown {...mockProps} />
@@ -64,7 +64,7 @@ describe('ColumnVisibilityDropdown Component', () => {
   });
 
   test('closes dropdown when Escape key is pressed', async () => {
-    const user = userEvent.setup();
+    const user = userEvent;
     render(<ColumnVisibilityDropdown {...mockProps} />);
     
     const button = screen.getByRole('button');
@@ -82,7 +82,7 @@ describe('ColumnVisibilityDropdown Component', () => {
   });
 
   test('rotates arrow icon when dropdown is open', async () => {
-    const user = userEvent.setup();
+    const user = userEvent;
     render(<ColumnVisibilityDropdown {...mockProps} />);
     
     const button = screen.getByRole('button');
@@ -99,7 +99,7 @@ describe('ColumnVisibilityDropdown Component', () => {
 
   describe('Column Checkboxes', () => {
     test('displays all columns with correct checked state', async () => {
-      const user = userEvent.setup();
+      const user = userEvent;
       render(<ColumnVisibilityDropdown {...mockProps} />);
       
       const button = screen.getByRole('button');
@@ -115,7 +115,7 @@ describe('ColumnVisibilityDropdown Component', () => {
     });
 
     test('calls toggleColumnVisibility when checkbox is clicked', async () => {
-      const user = userEvent.setup();
+      const user = userEvent;
       render(<ColumnVisibilityDropdown {...mockProps} />);
       
       const button = screen.getByRole('button');
@@ -133,7 +133,7 @@ describe('ColumnVisibilityDropdown Component', () => {
         hiddenColumns: new Set(['lastName', 'age', 'email', 'phone'])
       };
       
-      const user = userEvent.setup();
+      const user = userEvent;
       render(<ColumnVisibilityDropdown {...singleColumnProps} />);
       
       const button = screen.getByRole('button');
@@ -147,7 +147,7 @@ describe('ColumnVisibilityDropdown Component', () => {
     });
 
     test('allows showing hidden columns', async () => {
-      const user = userEvent.setup();
+      const user = userEvent;
       render(<ColumnVisibilityDropdown {...mockProps} />);
       
       const button = screen.getByRole('button');
@@ -168,7 +168,7 @@ describe('ColumnVisibilityDropdown Component', () => {
         hiddenColumns: new Set()
       };
       
-      const user = userEvent.setup();
+      const user = userEvent;
       render(<ColumnVisibilityDropdown {...allVisibleProps} />);
       
       const button = screen.getByRole('button');
@@ -179,7 +179,7 @@ describe('ColumnVisibilityDropdown Component', () => {
     });
 
     test('Show All button calls showAllColumns and closes dropdown', async () => {
-      const user = userEvent.setup();
+      const user = userEvent;
       render(<ColumnVisibilityDropdown {...mockProps} />);
       
       const button = screen.getByRole('button');
@@ -201,7 +201,7 @@ describe('ColumnVisibilityDropdown Component', () => {
         hiddenColumns: new Set(['lastName', 'age', 'email', 'phone'])
       };
       
-      const user = userEvent.setup();
+      const user = userEvent;
       render(<ColumnVisibilityDropdown {...singleColumnProps} />);
       
       const button = screen.getByRole('button');
@@ -212,7 +212,7 @@ describe('ColumnVisibilityDropdown Component', () => {
     });
 
     test('Hide All button calls hideAllColumns and closes dropdown', async () => {
-      const user = userEvent.setup();
+      const user = userEvent;
       render(<ColumnVisibilityDropdown {...mockProps} />);
       
       const button = screen.getByRole('button');
@@ -239,7 +239,7 @@ describe('ColumnVisibilityDropdown Component', () => {
     });
 
     test('button ARIA expanded changes when dropdown opens', async () => {
-      const user = userEvent.setup();
+      const user = userEvent;
       render(<ColumnVisibilityDropdown {...mockProps} />);
       
       const button = screen.getByRole('button');
@@ -251,7 +251,7 @@ describe('ColumnVisibilityDropdown Component', () => {
     });
 
     test('checkboxes have proper labels', async () => {
-      const user = userEvent.setup();
+      const user = userEvent;
       render(<ColumnVisibilityDropdown {...mockProps} />);
       
       const button = screen.getByRole('button');
@@ -274,7 +274,7 @@ describe('ColumnVisibilityDropdown Component', () => {
         hiddenColumns: new Set(['lastName', 'age', 'email', 'phone'])
       };
       
-      const user = userEvent.setup();
+      const user = userEvent;
       render(<ColumnVisibilityDropdown {...singleColumnProps} />);
       
       const button = screen.getByRole('button');
@@ -287,7 +287,7 @@ describe('ColumnVisibilityDropdown Component', () => {
     });
 
     test('dropdown has proper CSS classes', async () => {
-      const user = userEvent.setup();
+      const user = userEvent;
       render(<ColumnVisibilityDropdown {...mockProps} />);
       
       const button = screen.getByRole('button');

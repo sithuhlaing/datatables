@@ -38,7 +38,7 @@ describe('DraggableColumnHeader Component', () => {
   });
 
   test('calls handleSort when header title is clicked', async () => {
-    const user = userEvent.setup();
+    const user = userEvent;
     render(<DraggableColumnHeader {...mockProps} />);
     
     const headerTitle = screen.getByText('FirstName');

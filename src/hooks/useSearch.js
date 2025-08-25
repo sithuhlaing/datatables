@@ -5,13 +5,14 @@ export const useSearch = (data) => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const filteredData = useMemo(() => {
+    if (!data || !Array.isArray(data)) return [];
     if (!searchTerm) return data;
 
-    return data.filter(item =>
-      Object.values(item).some(value =>
+    return data.filter(item => {
+      return Object.values(item).some(value => 
         String(value).toLowerCase().includes(searchTerm.toLowerCase())
-      )
-    );
+      );
+    });
   }, [data, searchTerm]);
 
   return {

@@ -1,16 +1,17 @@
 
 import React from 'react';
 
-const SearchInput = ({ searchTerm, setSearchTerm }) => {
-  return (
+const SearchInput = ({ value, onChange, placeholder = "Search..." }) => (
+  <div className="search-input-container">
     <input
       type="text"
-      placeholder="Search..."
-      value={searchTerm}
-      onChange={(e) => setSearchTerm(e.target.value)}
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+      placeholder={placeholder}
       className="search-input"
+      aria-label="Search table data"
     />
-  );
-};
+  </div>
+);
 
 export default SearchInput;

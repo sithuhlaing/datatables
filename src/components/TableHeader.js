@@ -1,6 +1,6 @@
 
 import React from 'react';
-import DraggableColumnHeader from './DraggableColumnHeader';
+import DraggableHeaderCell from './DraggableHeaderCell';
 
 const TableHeader = ({
   columns,
@@ -15,13 +15,13 @@ const TableHeader = ({
     <thead>
       <tr>
         {columns.map((column, index) => (
-          <DraggableColumnHeader
+          <DraggableHeaderCell
             key={column}
             column={column}
             index={index}
             getSortInfo={getSortInfo}
             handleSort={handleSort}
-            columnFilters={columnFilters}
+            columnFilter={columnFilters[column] || ''}
             updateColumnFilter={updateColumnFilter}
             clearColumnFilter={clearColumnFilter}
             moveColumn={moveColumn}

@@ -24,6 +24,7 @@ export const useColumnSearch = (data) => {
   };
 
   const filteredData = useMemo(() => {
+    if (!data || !Array.isArray(data)) return [];
     if (Object.keys(columnFilters).length === 0) return data;
 
     return data.filter(item => {

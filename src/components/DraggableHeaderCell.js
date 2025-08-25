@@ -2,18 +2,15 @@
 import React, { useState } from 'react';
 import ColumnSearchInput from './ColumnSearchInput';
 
-const DraggableColumnHeader = ({
+const DraggableHeaderCell = ({
   column,
   index,
-  visibleIndex,
   getSortInfo,
   handleSort,
-  columnFilters,
+  columnFilter,
   updateColumnFilter,
   clearColumnFilter,
-  moveColumn,
-  allColumns,
-  visibleColumns
+  moveColumn
 }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [dragOver, setDragOver] = useState(false);
@@ -84,7 +81,7 @@ const DraggableColumnHeader = ({
         </div>
         <ColumnSearchInput
           column={column}
-          value={columnFilters[column]}
+          value={columnFilter}
           onChange={updateColumnFilter}
           onClear={clearColumnFilter}
         />
@@ -93,4 +90,4 @@ const DraggableColumnHeader = ({
   );
 };
 
-export default DraggableColumnHeader;
+export default DraggableHeaderCell;
